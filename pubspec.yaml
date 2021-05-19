@@ -1,5 +1,5 @@
 name: hourly
-description: A hourly alarm app in Nepali language.
+description: A hourly alarm app.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -24,6 +24,8 @@ dependencies:
   flutter_local_notifications: ^5.0.0
   shared_preferences: ^2.0.4
   provider: ^5.0.0
+  flutter_native_timezone: ^1.0.10
+
   flutter:
     sdk: flutter
 

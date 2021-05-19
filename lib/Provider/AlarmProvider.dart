@@ -68,9 +68,7 @@ void scheduleAlarm(AlarmData alarm) async {
     'The time is ' + alarm.key,
     null,
     _nextInstance(alarm.time),
-    NotificationDetails(
-      android: AndroidNotificationDetails(value, '${alarm.key.toLowerCase()} notification channel', null, sound: RawResourceAndroidNotificationSound(value)),
-    ),
+    NotificationDetails(android: AndroidNotificationDetails(value, 'Notification at ${alarm.key.toLowerCase()}', null, sound: RawResourceAndroidNotificationSound(value))),
     androidAllowWhileIdle: true,
     uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
     matchDateTimeComponents: DateTimeComponents.time,
@@ -84,10 +82,6 @@ Future<void> cancelAlarm(AlarmData alarm) async {
 tz.TZDateTime _nextInstance(int time) {
   final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
   tz.TZDateTime scheduledDate = tz.TZDateTime(tz.local, now.year, now.month, now.day, time);
-  if (scheduledDate.isBefore(now)) {
-    scheduledDate = scheduledDate.add(const Duration(days: 1));
-  }
-  scheduledDate = scheduledDate.subtract(const Duration(hours: 5, minutes: 45)); //Compensate GMT issue
-  print('Scheduled:' + scheduledDate.add(const Duration(hours: 5, minutes: 45)).toString());
+  if (scheduledDate.isBefore(now)) scheduledDate = scheduledDate.add(const Duration(days: 1));
   return scheduledDate;
 }
