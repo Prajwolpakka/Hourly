@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 //.wav file
@@ -27,7 +26,6 @@ class AlarmProvider extends ChangeNotifier {
         _alarmList.add(AlarmData(time: i, key: key + " PM"));
       }
     }
-    tz.initializeTimeZones();
     _fetchData();
   }
 

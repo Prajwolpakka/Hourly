@@ -14,20 +14,19 @@ class _AlarmScreenState extends State<AlarmScreen> {
     Provider.of<AlarmProvider>(context, listen: false).alarmList;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xff1e1e1e),
         appBar: AppBar(
-          backgroundColor: Colors.black54,
+          backgroundColor: Colors.blue[700],
           elevation: 0,
           title: Text('Hourly', style: TextStyle(fontFamily: 'avenir')),
-          shape: BeveledRectangleBorder(borderRadius: BorderRadius.only(bottomRight: Radius.circular(25.0))),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomRight: Radius.circular(20))),
         ),
         body: Consumer<AlarmProvider>(
           builder: (context, provider, _) {
             if (provider.fetching)
               return Center(child: CircularProgressIndicator());
             else
-              return Container(
-                margin: EdgeInsets.fromLTRB(20, 10, 10, 10),
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: ScrollConfiguration(
                   behavior: MyBehavior(),
                   child: ListView.builder(
