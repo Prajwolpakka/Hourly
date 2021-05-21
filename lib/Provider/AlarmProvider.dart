@@ -66,7 +66,16 @@ void scheduleAlarm(AlarmData alarm) async {
     'The time is ' + alarm.key,
     null,
     _nextInstance(alarm.time),
-    NotificationDetails(android: AndroidNotificationDetails(value, 'Notification at ${alarm.key.toLowerCase()}', null, sound: RawResourceAndroidNotificationSound(value))),
+    NotificationDetails(
+      android: AndroidNotificationDetails(
+        value,
+        'Notification at ${alarm.key.toLowerCase()}',
+        null,
+        importance: Importance.max,
+        priority: Priority.max,
+        sound: RawResourceAndroidNotificationSound(value),
+      ),
+    ),
     androidAllowWhileIdle: true,
     uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
     matchDateTimeComponents: DateTimeComponents.time,
