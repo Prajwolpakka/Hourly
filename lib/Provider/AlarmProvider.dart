@@ -63,7 +63,7 @@ void scheduleAlarm(AlarmData alarm) async {
   print(value);
   await flutterLocalNotificationsPlugin.zonedSchedule(
     alarm.time,
-    'The time is ' + alarm.key,
+    "It's" + alarm.key.toLowerCase(),
     null,
     _nextInstance(alarm.time),
     NotificationDetails(
